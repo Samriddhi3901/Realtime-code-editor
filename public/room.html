@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Room | CodeSync Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/python/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/clike/clike.min.js"></script>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body class="room">
+  <div id="main">
+    <!-- Toolbar -->
+    <div id="toolbar">
+      <select id="language"></select>
+      <button id="runBtn">Run Code</button>
+      <div id="userCount"></div>
+    </div>
+
+    <!-- Editor -->
+    <div id="editor"></div>
+
+    <!-- Output pane -->
+    <div id="output-pane">
+      <div id="output-header">Output</div>
+      <pre id="output"></pre>
+    </div>
+  </div>
+
+  <!-- Viewer comment box (bottom-right) -->
+  <div id="viewer-comment-box" class="hidden">
+    <textarea id="commentText" placeholder="Send a comment to the author…"></textarea>
+    <button id="sendCommentBtn">Send</button>
+  </div>
+
+  <!-- Author comment list (right sidebar) -->
+  <div id="author-comments" class="hidden">
+    <h3>Comments</h3>
+    <div id="commentList"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

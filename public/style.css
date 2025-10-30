@@ -1,0 +1,311 @@
+/* ==============================
+   GLOBAL & HOMEPAGE
+   ============================== */
+   * { margin: 0; padding: 0; box-sizing: border-box; }
+
+   body {
+     font-family: 'Roboto Mono', monospace;
+     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+     color: #e2e8f0;
+     height: 100vh;
+     overflow: hidden;
+   }
+   
+   /* Homepage */
+   .container {
+     max-width: 600px;
+     margin: 0 auto;
+     padding: 2rem;
+     text-align: center;
+     height: 100vh;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+   }
+   
+   .title {
+     font-family: 'Orbitron', sans-serif;
+     font-size: 4rem;
+     background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     margin-bottom: 0.5rem;
+   }
+   
+   .pro { color: #60a5fa; }
+   
+   .tagline {
+     color: #94a3b8;
+     margin-bottom: 3rem;
+     font-size: 1.1rem;
+   }
+   
+   .card {
+     background: rgba(30, 41, 59, 0.7);
+     backdrop-filter: blur(12px);
+     border: 1px solid rgba(59, 130, 246, 0.3);
+     border-radius: 16px;
+     padding: 1.5rem;
+     margin: 1rem 0;
+     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+     transition: all 0.3s ease;
+   }
+   
+   .card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 16px 40px rgba(59, 130, 246, 0.2);
+   }
+   
+   input {
+     width: 100%;
+     padding: 0.8rem;
+     margin: 0.8rem 0;
+     border: 1px solid #3b82f6;
+     background: rgba(15, 23, 42, 0.8);
+     color: #e2e8f0;
+     border-radius: 8px;
+     font-size: 1rem;
+   }
+   
+   button {
+     background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+     color: white;
+     border: none;
+     padding: 0.8rem 1.5rem;
+     border-radius: 8px;
+     cursor: pointer;
+     font-weight: bold;
+     transition: 0.3s;
+     width: 100%;
+     font-size: 1rem;
+   }
+   
+   button:hover {
+     transform: scale(1.03);
+     box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+   }
+   
+   .or {
+     color: #64748b;
+     margin: 1rem 0;
+     font-weight: bold;
+   }
+   
+   .features {
+     display: flex;
+     justify-content: space-around;
+     margin-top: 2rem;
+     font-size: 0.9rem;
+     color: #60a5fa;
+   }
+   
+   /* ==============================
+      ROOM LAYOUT
+      ============================== */
+   #main {
+     display: flex;
+     flex-direction: column;
+     height: 100vh;
+     background: #0f172a;
+   }
+   
+   /* Toolbar */
+   #toolbar {
+     padding: 0.8rem 1rem;
+     background: #1e293b;
+     display: flex;
+     align-items: center;
+     gap: 1rem;
+     border-bottom: 1px solid #334155;
+     z-index: 10;
+   }
+   
+   #language, #runBtn {
+     padding: 0.5rem 1rem;
+     border-radius: 8px;
+     border: 1px solid #3b82f6;
+     background: #1e40af;
+     color: white;
+     font-size: 0.9rem;
+   }
+   
+   #runBtn {
+     background: #10b981;
+     font-weight: bold;
+   }
+   
+   #userCount {
+     margin-left: auto;
+     color: #60a5fa;
+     font-size: 0.9rem;
+   }
+   
+   /* Editor */
+   #editor {
+     flex: 1;
+     position: relative;
+   }
+   
+   /* Output Pane */
+   #output-pane {
+     height: 180px;
+     background: #0f172a;
+     border-top: 1px solid #334155;
+     display: flex;
+     flex-direction: column;
+   }
+   
+   #output-header {
+     background: #1e293b;
+     padding: 0.4rem 1rem;
+     font-weight: bold;
+     color: #60a5fa;
+     font-size: 0.9rem;
+   }
+   
+   #output {
+     flex: 1;
+     margin: 0;
+     padding: 0.8rem;
+     overflow-y: auto;
+     font-family: 'Courier New', monospace;
+     color: #10b981;
+     white-space: pre-wrap;
+     font-size: 0.95rem;
+   }
+   
+   /* ==============================
+      COMMENTS
+      ============================== */
+   
+   /* Viewer: Floating comment box (bottom-right) */
+   #viewer-comment-box {
+     position: fixed;
+     bottom: 20px;
+     right: 20px;
+     width: 300px;
+     background: rgba(15,23,42,0.95);
+     border: 1px solid #3b82f6;
+     border-radius: 12px;
+     padding: 0.8rem;
+     box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+     display: flex;
+     flex-direction: column;
+     gap: 0.5rem;
+     z-index: 100;
+   }
+   
+   #viewer-comment-box textarea {
+     resize: none;
+     height: 70px;
+     background: #1e293b;
+     border: 1px solid #3b82f6;
+     color: #e2e8f0;
+     padding: 0.5rem;
+     border-radius: 8px;
+     font-size: 0.9rem;
+   }
+   
+   #viewer-comment-box button {
+     align-self: flex-end;
+     width: auto;
+     padding: 0.5rem 1rem;
+     font-size: 0.9rem;
+   }
+   
+   /* Author: Right sidebar comment list */
+   #author-comments {
+     position: fixed;
+     right: 0;
+     top: 0;
+     width: 300px;
+     height: 100vh;
+     background: rgba(15,23,42,0.95);
+     border-left: 1px solid #334155;
+     padding: 1rem;
+     overflow-y: auto;
+     z-index: 50;
+   }
+   
+   #author-comments h3 {
+     margin-top: 0;
+     color: #8b5cf6;
+     font-size: 1.1rem;
+   }
+   
+   #commentList .comment {
+     background: #1e293b;
+     padding: 0.7rem;
+     border-radius: 8px;
+     margin: 0.5rem 0;
+     border-left: 3px solid #8b5cf6;
+     font-size: 0.9rem;
+     word-wrap: break-word;
+   }
+   
+   /* Hidden class */
+   .hidden { display: none !important; }
+   
+   /* CodeMirror theme override (optional) */
+   .CodeMirror {
+     height: 100% !important;
+     font-size: 15px;
+   }
+
+   /* ==============================
+   COMMENT REPLIES (Author)
+   ============================== */
+.comment {
+    background: #1e293b;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin: 0.6rem 0;
+    border-left: 3px solid #8b5cf6;
+  }
+  
+  .comment-body {
+    margin-bottom: 0.5rem;
+  }
+  
+  .reply-section {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  
+  .reply-input {
+    width: 100%;
+    height: 50px;
+    background: #0f172a;
+    border: 1px solid #3b82f6;
+    color: #e2e8f0;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    resize: none;
+  }
+  
+  .reply-btn {
+    align-self: flex-end;
+    background: #8b5cf6;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+  
+  .reply-btn:hover {
+    background: #7c3aed;
+  }
+  
+  .reply {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: #172554;
+    border-radius: 6px;
+    border-left: 2px solid #60a5fa;
+    font-size: 0.85rem;
+  }

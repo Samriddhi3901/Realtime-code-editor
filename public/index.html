@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CodeSync Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="home">
+  <div class="container">
+    <h1 class="title">CodeSync <span class="pro">Pro</span></h1>
+    <p class="tagline">Real-time collaborative coding with live execution</p>
+
+    <div class="card create">
+      <h2>Create Room</h2>
+      <input type="text" id="createRoomId" placeholder="Enter Room ID (e.g. my-project-123)" />
+      <button onclick="createRoom()">Create & Join</button>
+    </div>
+
+    <div class="or">OR</div>
+
+    <div class="card join">
+      <h2>Join Room</h2>
+      <input type="text" id="joinRoomId" placeholder="Enter Room ID" />
+      <button onclick="joinRoom()">Join as Viewer</button>
+    </div>
+
+    <div class="features">
+      <div>⚡ Real-time Sync</div>
+      <div>🌐 Java, Python, C++</div>
+      <div>💬 Live Comments</div>
+      <div>🚀 Instant Output</div>
+    </div>
+  </div>
+
+  <script>
+    function createRoom() {
+      const id = document.getElementById('createRoomId').value.trim();
+      if (id) window.location.href = `/room.html?id=${id}&author=true`;
+    }
+    function joinRoom() {
+      const id = document.getElementById('joinRoomId').value.trim();
+      if (id) window.location.href = `/room.html?id=${id}`;
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        if (document.activeElement.id === 'createRoomId') createRoom();
+        if (document.activeElement.id === 'joinRoomId') joinRoom();
+      }
+    });
+  </script>
+</body>
+</html>
